@@ -1,30 +1,8 @@
 "use client";
-import { Button } from "@/components/ui/button";
-// import { getTheme, setTheme } from "@/lib/utils";
-// import { Skeleton } from "@/components/ui/skeleton"
-import Autoplay from "embla-carousel-autoplay";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Facebook,
-  Instagram,
-  Moon,
-  Sun,
-  Twitter,
-  Youtube,
-} from "lucide-react";
-import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "./ui/carousel";
-import { FaXTwitter } from "react-icons/fa6";
-import Link from "next/link";
 
 export default function HeaderTop({ data }: any) {
-  const { setTheme, theme } = useTheme();
+
   const currentDate = new Date();
   const router = useRouter();
   const options: Intl.DateTimeFormatOptions = {
@@ -41,7 +19,7 @@ export default function HeaderTop({ data }: any) {
         <div className="flex p-[10px] text-[13px] bg-primary text-accent">
           Trending
         </div>
-        <Carousel
+        {/* <Carousel
           className="flex flex-1"
           plugins={[
             Autoplay({
@@ -58,7 +36,7 @@ export default function HeaderTop({ data }: any) {
               </CarouselItem>
             ))}
           </CarouselContent>
-        </Carousel>
+        </Carousel> */}
 
         <div className="flex items-center gap-[25px]">
           <div className="text-[14px]">{formattedDate}</div>
@@ -101,13 +79,13 @@ export function HeaderTopSkeleton() {
         <div className="flex flex-1 justify-between items-center">
           <div className="flex flex-1 mr-5 h-6 font-bold bg-[#d1d5db] animate-pulse rounded-md"></div>
           <div className="hidden md:flex gap-[3px]">
-            <Button variant="outline">
+            {/* <Button variant="outline">
               <ChevronLeft className="h-43 w-4" />
             </Button>
 
             <Button variant="outline">
               <ChevronRight className="h-4 w-4" />
-            </Button>
+            </Button> */}
           </div>
         </div>
 

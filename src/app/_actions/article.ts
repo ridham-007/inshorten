@@ -1,22 +1,39 @@
 "use server"
 
-import { prepareServerError } from "@/lib/helpers";
-
 export async function getRecentNews() {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/article/${process.env.NEXT_PUBLIC_SITE_ID}/recent`,
+      `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/recent`,
       {
         next: { revalidate: 60 },
       }
     );
     const responseData = await res.json();
-    const { data } = responseData;
+    const { articles = [] } = responseData;
     return {
-      data: data,
-      success: true,
-    };
+      data: articles,
+      success: true
+    }
   } catch (e: any) {
-    // return prepareServerError(e?.message);
+    console.error(e);
+  }
+}
+
+export async function getPopularNews() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/popular`,
+      {
+        next: { revalidate: 60 },
+      }
+    );
+    const responseData = await res.json();
+    const { articles = [] } = responseData;
+    return {
+      data: articles,
+      success: true
+    }
+  } catch (e: any) {
+      console.error(e);
   }
 }
