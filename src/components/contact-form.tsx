@@ -15,7 +15,7 @@ export default function ContactForm() {
             width: "full",
             gap: "5px",
           }}
-          spacing={2  }
+          spacing={2}
           noValidate
           autoComplete="off"
         >
