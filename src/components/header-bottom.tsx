@@ -1,107 +1,77 @@
 "use client";
 import Link from "next/link";
-import { IoIosArrowDown } from "react-icons/io";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { MenuIcon, ThermometerSun, X } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import Temperature from "./Temperature";
-import Logo from "./logo";
-import { Button } from "./ui/button";
-import Timer from "./timer";
+import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill, BsHammer } from "react-icons/bs";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoCloseSharp } from "react-icons/io5";
 
 const SEPARATION_LENGTH = 9;
 
-export default function HeaderBottom(props: any, req: any) {
+export default function HeaderBottom({data}: any) {
   const pathname = usePathname();
-  const highlightSelectedTab = (item: any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const highlightSelectedTab = (data: any) => {
     return `${
-      pathname === `/${item?.slug}` ? "!bg-primary !text-accent" : null
+      pathname === `/${data}` ? "!bg-black !text-white" : null
     }`;
   };
-
   return (
-    <section className="flex justify-between gap-[5px] w-[100%] h-auto px-[20px] items-center">
-      <NavigationMenu className="hidden md:flex items-center justify-start max-w-[600px] gap-[10px] md:gap-[5px]">
-        <NavigationMenuList>
-          {[...props.categories]
-            .slice(0, SEPARATION_LENGTH)
-            .map((item: any, index) => (
-              <NavigationMenuItem key={`menubar-item-${index}`}>
-                <Link
-                  href={item?.slug}
-                  legacyBehavior
-                  passHref
-                  key={`menubar-${index}`}
-                >
-                  <NavigationMenuLink
-                    className={`${navigationMenuTriggerStyle()} ${highlightSelectedTab(
-                      item
-                    )}`}
-                  >
-                    {item?.name}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            ))}
-        </NavigationMenuList>
-      </NavigationMenu>
+    <nav className="bg-white">
+      <div className="max-w-7xl px-6 lg:px-0">
+        <div className="relative flex items-center justify-between h-16">
+          {/* Mobile menu button */}
+          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+              aria-expanded={isOpen}
+            >
+              <span className="sr-only">Open main menu</span>
+              {!isOpen ? (
+                <RxHamburgerMenu  className="block h-6 w-6" />
+              ) : (
+                <IoCloseSharp className="block h-6 w-6" />
+              )}
+            </button>
+          </div>
 
-      <div className="flex md:hidden">
-        <Drawer direction="left">
-          <DrawerTrigger aria-label="side-menu">
-            <MenuIcon className="h-6 w-6" />
-          </DrawerTrigger>
-          <DrawerContent draggable={false} className="p-2">
-            <div className="flex items-center justify-between w-[100%]">
-              <Logo place={"header"} />
-              <DrawerClose asChild>
-                <Button variant="secondary" size="icon">
-                  <X className="h-6 w-6" />
-                </Button>
-              </DrawerClose>
-            </div>
-            <div className="flex-col gap-[10px] md:gap-[5px]">
-              {[...props.categories].map((item, index) => (
-                <DrawerClose asChild key={index}>
-                  <Link
-                    href={item?.slug}
-                    className="flex cursor-pointer justify-center items-center w-full py-1"
-                  >
-                    {item?.name}
+          {/* Desktop menu items */}
+          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="hidden sm:block sm:ml-6">
+              <div className="flex space-x-4">
+                {data.map((item: any) => (
+                  <Link key={item.id} href={`/${item.slug}`} passHref>
+                    <div
+                      className={`${
+                        highlightSelectedTab(item.slug)
+                      } hover:bg-gray-700 bg-[#f5f7fa] hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer`}
+                    >
+                      {item.name}
+                    </div>
                   </Link>
-                </DrawerClose>
-              ))}
+                ))}
+              </div>
             </div>
-          </DrawerContent>
-        </Drawer>
-      </div>
-      <div className="flex items-center gap-[10px]">
-        <Timer />
-        <div className="flex items-center gap-[5px] lg:gap-[10px] ">
-          <ThermometerSun />
-          <Temperature />
+          </div>
         </div>
       </div>
-    </section>
+
+      {/* Mobile menu, toggle based on menu state */}
+      <div className={`${isOpen ? "block" : "hidden"} sm:hidden`}>
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          {data.map((item: any) => (
+            <Link key={item.id} href={`/${item.slug}`} passHref>
+              <div
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+              >
+                {item.name}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </nav>
   );
 }
 

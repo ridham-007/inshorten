@@ -1,10 +1,6 @@
 'use client'
 import React, { useEffect } from 'react'
 import parser from 'html-react-parser';
-import { Button } from './ui/button';
-import Link from 'next/link';
-import { Facebook, Youtube } from 'lucide-react';
-import { FaXTwitter } from 'react-icons/fa6';
 
 const ShowArticle = ({ article }: any) => {
   const formatDate = (date: string): string => {
@@ -43,21 +39,6 @@ const ShowArticle = ({ article }: any) => {
             {formatDate(article?.updatedAt)}
           </div>
           <div className="flex gap-2">
-            {/* <Button variant="outline" size="icon">
-              <Link href="/" target="_blank" aria-label="facebook">
-                <Facebook className="h-[1.2rem] w-[1.2rem]" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Link href="/" target="_blank" aria-label="twitter">
-                <FaXTwitter className="h-[1.2rem] w-[1.2rem]" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Link href="/" target="_blank" aria-label="youtube">
-                <Youtube className="h-[1.2rem] w-[1.2rem]" />
-              </Link>
-            </Button> */}
           </div>
         </div>
       </div>
@@ -87,15 +68,6 @@ export function ArticleSkeleton() {
               </div>
             );
           })}
-
-        {/* <div className="flex flex-col basis-[98%] gap-2 w-[100%] overflow-hidden mt-[10px]">
-                <div className="w-[50%] h-[35px] bg-[#d1d5db] animate-pulse rounded-sm"></div>
-                <div className="flex flex-col gap-2 px-[12px] py-[2px]">
-                  <div className="w-full h-5 bg-[#d1d5db] animate-pulse rounded-sm"></div>
-                  <div className="w-full h-5 bg-[#d1d5db] animate-pulse rounded-sm"></div>
-                  <div className="w-full h-5 bg-[#d1d5db] animate-pulse rounded-sm"></div>
-                </div>
-              </div> */}
       </div>
     </div>
   );

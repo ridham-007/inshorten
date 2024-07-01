@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import Carousel from "./carousel";
 
 export default function HeaderTop({ data }: any) {
 
@@ -15,54 +16,13 @@ export default function HeaderTop({ data }: any) {
 
   return (
     <section className={`flex flex-col px-[20px] w-[100%]`}>
-      <div className="hidden sm:flex flex-wrap justify-between items-center h-auto gap-[5px]">
-        <div className="flex p-[10px] text-[13px] bg-primary text-accent">
+      <div className="hidden sm:flex flex-wrap justify-between items-center h-auto gap-[5px] overflow-hidden">
+        <div className="flex p-[10px] text-[13px] bg-primary text-accent bg-black text-white z-10">
           Trending
         </div>
-        {/* <Carousel
-          className="flex flex-1"
-          plugins={[
-            Autoplay({
-              delay: 2000,
-            }),
-          ]}
-        >
-          <CarouselContent>
-            {data?.map((cur: any, index: number) => (
-              <CarouselItem key={index}>
-                <div className="p-1 text-[14px] line-clamp-1 cursor-pointer" onClick={() => { router?.push(cur?.slug) }}>
-                  {cur?.title}
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel> */}
-
-        <div className="flex items-center gap-[25px]">
+        <Carousel slides={data}/>
+        <div className="flex items-center gap-[25px] bg-white z-10">
           <div className="text-[14px]">{formattedDate}</div>
-          {/* <div className="hidden md:flex border-l-[1px] border-gray-400 h-[20px]"></div>
-          <div className="flex gap-[10px]">
-            <Button variant="outline" size="icon">
-              <Link href="#" target="_blank" aria-label="facebook">
-                <Facebook className="h-[1.2rem] w-[1.2rem]" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Link href="#" target="_blank" aria-label="instagram">
-                <Instagram className="h-[1.2rem] w-[1.2rem]" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Link href="#" target="_blank" aria-label="twitter">
-                <FaXTwitter className="h-[1.2rem] w-[1.2rem]" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Link href="#" target="_blank" aria-label="youtube">
-                <Youtube className="h-[1.2rem] w-[1.2rem]" />
-              </Link>
-            </Button>
-          </div> */}
         </div>
       </div>
     </section>

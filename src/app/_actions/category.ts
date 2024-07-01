@@ -17,3 +17,22 @@ export async function getHeaderCategories() {
       console.error(e);
     }
   }
+
+  export async function getTrendingForSite() {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/trending`,
+        {
+          next: { revalidate: 60 },
+        }
+      );
+      const responseData = await res.json();
+      const { trending = [] } = responseData;
+      return {
+        data: trending,
+        success: true
+      }
+    } catch (e: any) {
+      console.error(e);
+    }
+  } 

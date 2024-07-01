@@ -33,10 +33,10 @@ export default function DynamicNewsWall(props: NewsWallProps) {
       </div>
       {props.news?.map((cur: any, index) => {
         return (
-          <Link
+          <div
             className="flex flex-col"
             key={`${props.title}-${index}`}
-            href={cur.slug}
+            onClick={() => router.push(cur.slug)}
           >
             <hr className="py-2 text-[#e3e3e3]"></hr>
             <div
@@ -63,7 +63,7 @@ export default function DynamicNewsWall(props: NewsWallProps) {
                 Read
               </Link>
             </div>
-          </Link>
+          </div>
         );
       })}
     </div>
