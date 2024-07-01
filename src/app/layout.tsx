@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
+import Script from "next/script";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +34,20 @@ export default function RootLayout({
           {children}
           {footer}
       </body>
+      <GoogleAnalytics gaId="G-Y2FCGQGZ8S" />
+      <Script id="" type="application/ld+json"> 
+        {JSON.stringify({
+          "@context": "https://schema.org/",
+          "@type": "WebSite",
+          "name": "InShorten",
+          "url": "https://www.inshorten.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.inshorten.com/about-us{search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        })}
+      </Script>
     </html>
   );
 }

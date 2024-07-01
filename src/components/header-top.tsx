@@ -21,7 +21,7 @@ export default function HeaderTop({ data }: any) {
           Trending
         </div>
         <Carousel slides={data}/>
-        <div className="flex items-center gap-[25px] bg-white z-10">
+        <div className="flex items-center gap-[25px] bg-[#f5f7fa] z-10">
           <div className="text-[14px]">{formattedDate}</div>
         </div>
       </div>
