@@ -1,7 +1,7 @@
 "use client";
 import { Article } from "@/lib/type-identifiers";
 import React, { useEffect } from "react";
-import featureImage from "../../public/about1.jpg";
+import featureImage from "../../public/preview.jpg";
 export default function DoNotMiss2(props: Article) {
   const description = "10 Scandalous Love Triangle Captivating the public";
   const dis =

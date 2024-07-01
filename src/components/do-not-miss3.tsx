@@ -1,7 +1,7 @@
 "use client";
 import { Article } from "@/lib/type-identifiers";
 import React from "react";
-import featureImage from "../../public/about1.jpg";
+import featureImage from "../../public/preview.jpg";
 const title = "Social Media Marketing for Franchies is Meant for Women";
 const description =
   "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, quia quo at nisi omnis eveniet non sapiente nesciunt fugit. Autem natus nihir...";
