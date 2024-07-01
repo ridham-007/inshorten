@@ -9,5 +9,9 @@ export interface Article {
   featureImage: string;
   createdAt?: string;
   slug: string;
-  content: any
+  content: any;
+  description?:string;
+  category?: {
+    name: string;
+  }
 }

@@ -1,9 +1,14 @@
 "use server"
 
-export async function getRecentNews() {
+export async function getRecentNews(limit: number = 0) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/recent`,
+    let url = "";
+    if(limit){
+      url = `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/recent/${limit}`
+    }else{
+      url = `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/recent`
+    }
+    const res = await fetch(url,
       {
         next: { revalidate: 60 },
       }
