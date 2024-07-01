@@ -1,11 +1,16 @@
-import { useRouter } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 // import { GetPopularNews, GetRecentNews, LoadContentUsingSlug } from "./actions";
 import { Suspense } from "react";
-import { CategoryWiseTopNewsSkeleton } from "@/components/category-wise-top-news";
-import { ArticleSkeleton } from "@/components/show-article";
+import CategoryWiseTopNews, { CategoryWiseTopNewsSkeleton } from "@/components/category-wise-top-news";
+import ShowArticle, { ArticleSkeleton } from "@/components/show-article";
 import DynamicNewsWall, { DynamicNewsWallSkeleton } from "@/components/dynamic-news-wall";
 import { Metadata, ResolvingMetadata } from "next";
-import { getPopularNews, getRecentNews } from "../_actions/article";
+import { getArticleWithPage, getPopularNews, getRecentNews } from "../_actions/article";
+import AboutUs from "@/components/about-us";
+import PrivacyPolicy from "@/components/privacy-policy";
+import ContactForm from "@/components/contact-form";
+import TermsConditions from "@/components/terms-conditions";
+import Disclaimer from "@/components/disclaimer";
 
 function getMetaDataOfAbout(): Metadata {
   return {
@@ -160,7 +165,7 @@ export default function Slug({
   params: { slug: string[] };
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-
+  console.log(searchParams, params)
   const renderShimmerContent = () => {
     if (Array.isArray(params.slug) && params.slug.length > 0) {
       const dashCount = (params.slug[0].match(/-/g) || [])?.length;
@@ -175,20 +180,39 @@ export default function Slug({
     }
   }
 
+  const renderContent = async () => {
+    if (params.slug[0] === '_not-found') {
+      return notFound();
+    }
+    switch (params.slug[0]) {
+      case 'about-us':
+        return <AboutUs />;
+      case 'privacy-policy':
+        return <PrivacyPolicy />;
+      case 'contact-us':
+        return <ContactForm />;
+      case 'terms-conditions':
+        return <TermsConditions />;
+      case 'disclaimer':
+        return <Disclaimer />;
+      default: {
+        try {
+          const data = await getArticleWithPage(`${params.slug[0]}`);
+        } catch (e) {
+          return notFound();
+        }
+      }
+    }
+  };
+
   return (
     <main className="flex w-full flex-wrap gap-2 px-3">
       <section className="flex flex-col flex-1 basis-[100%] sm:basis-[68%]">
         {Array.isArray(params.slug) && params.slug.length > 0 && (
-        //   <Suspense fallback={renderShimmerContent()}>
-        //     {/* <LoadContentUsingSlug slug={params.slug[0]} /> */}
-        //     {(async function () {
-        //     const data = await getRecentNews();
-        //     return (
-        //       <DynamicNewsWall title="Recent News" news={data?.data} />
-        //     ); 
-        //   })()}
-        //   </Suspense>
-        <div>fdgdg</div>
+          <Suspense fallback={renderShimmerContent()}>
+            {/* <LoadContentUsingSlug slug={params.slug[0]} /> */}
+            {renderContent()}
+          </Suspense>
         )}
       </section>
       <section className="flex flex-col gap-2 flex-1 basis-[100%] sm:basis-[28%] px-2">
