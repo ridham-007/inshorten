@@ -231,3 +231,13 @@
 .article-container video {
     display: none;
 } 
+
+.two-column-container {
+    column-count: 2;
+    column-gap: 20px;
+    height: 200px;
+    padding: 5px 8px;
+    overflow: hidden;
+    text-align: justify;
+  }
+  

@@ -8,6 +8,7 @@ export interface Article {
   title: string;
   featureImage: string;
   createdAt?: string;
+  updatedAt?: string;
   slug: string;
   content: any;
   description?:string;

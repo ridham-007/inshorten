@@ -9,34 +9,36 @@ export default async function Home() {
   return (
     <main className="flex w-full flex-wrap gap-2 px-3">
       <section className="flex flex-col flex-1 basis-[100%] sm:basis-[68%]">
-        
-      <Suspense fallback={<DynamicNewsWallSkeleton label="Recent" />}>
-        {(async function () {
+        <Suspense fallback={<DynamicNewsWallSkeleton label="Recent" />}>
+          {(async function () {
             const data = await getRecentNews(1);
-            return (
-              <DoNotMiss3 {...data?.data[0]} />
-            );
+            return <DoNotMiss3 {...data?.data[0]} />;
           })()}
         </Suspense>
-        <DoNotMiss1 title={""} featureImage={""} slug={""} content={undefined}/>
-        <DoNotMiss2 title={""} featureImage={""} slug={""} content={undefined}/>
-        
+        <Suspense fallback={<DynamicNewsWallSkeleton label="Recent" />}>
+          {(async function () {
+            const data = await getRecentNews(1);
+            return <DoNotMiss1 {...data?.data[0]} />;
+          })()}
+        </Suspense>
+        <DoNotMiss2
+          title={""}
+          featureImage={""}
+          slug={""}
+          content={undefined}
+        />
       </section>
       <section className="flex flex-col gap-2 flex-1 basis-[100%] sm:basis-[28%] px-2">
         <Suspense fallback={<DynamicNewsWallSkeleton label="Recent" />}>
-        {(async function () {
+          {(async function () {
             const data = await getRecentNews();
-            return (
-              <DynamicNewsWall title="Recent News" news={data?.data} />
-            );
+            return <DynamicNewsWall title="Recent News" news={data?.data} />;
           })()}
         </Suspense>
         <Suspense fallback={<DynamicNewsWallSkeleton label="Popular" />}>
-        {(async function () {
+          {(async function () {
             const data = await getPopularNews();
-            return (
-              <DynamicNewsWall title="Popular News" news={data?.data} />
-            );
+            return <DynamicNewsWall title="Popular News" news={data?.data} />;
           })()}
         </Suspense>
       </section>
