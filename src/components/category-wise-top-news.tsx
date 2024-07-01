@@ -3,15 +3,36 @@
 import { useRouter } from "next/navigation";
 import ImageWithFallback from "./image-with-fallback";
 import Link from "next/link";
+import CustomButton from "@/components/ui/customButton";
+import { useEffect, useState } from "react";
+import { getDataBasedOnSlug } from "@/app/_actions/article";
 
-export default function CategoryWiseTopNews({ articles }: any) {
+const Size = 12;
+
+export default function CategoryWiseTopNews({ articles, category, total }: any) {
+  const [articleList, setArticles] = useState<any[]>(articles ?? []); 
+  const [isListCompleted, setListCompleted] = useState<boolean>(total === articleList.length ||false)
+  const [isLoading, setLoading] = useState<boolean>(false); 
   const router = useRouter();
   const handleArticleOpen = (article: any) => {
     router.push(`/${article?.slug}`);
   };
+
+  const fetchNewBatch = async () => {
+    setLoading(true)
+    const data = await getDataBasedOnSlug(category, Math.floor(articleList.length/Size) + 1, Size);
+    setArticles((previous: any) => [...previous, ...data?.data?.article]);
+    setLoading(false)
+  }
+
+  useEffect(()=>{
+    setListCompleted(total === articleList.length ||false);
+  },[articleList])
+
   return (
+    <>
     <div className="flex w-full flex-wrap justify-start gap-2 h-fit">
-      {articles.map((item: any, index: any) => {
+      {articleList?.map((item: any, index: any) => {
         return (
           <Link
             href={item?.slug}
@@ -28,9 +49,9 @@ export default function CategoryWiseTopNews({ articles }: any) {
                   ></ImageWithFallback>
                 </div>
               </div>
-              {item.description && (
+              {item?.description && (
                 <div className="flex w-[100%] text-ellipsis line-clamp-3 text-sm text-muted-foreground">
-                  {item.description}
+                  {item?.description}
                 </div>
               )}
             </div>
@@ -43,6 +64,10 @@ export default function CategoryWiseTopNews({ articles }: any) {
         );
       })}
     </div>
+    {!isListCompleted && <div className="flex w-full justify-center">
+      <CustomButton label={"Load more"} callback={fetchNewBatch} interactingAPI={isLoading} />
+    </div>}
+    </>
   );
 }
 

@@ -1,8 +1,11 @@
 'use client'
 import React, { useEffect } from 'react'
-import parser from 'html-react-parser';
+import parserReact from 'html-react-parser';
+import parser from './parser.js';
 
 const ShowArticle = ({ article }: any) => {
+  const {parse, parseOne} = parser();
+  const isJsonContent = !!article?.jsonContent;
   const formatDate = (date: string): string => {
     const options: Intl.DateTimeFormatOptions = {
       weekday: "long",
@@ -30,19 +33,22 @@ const ShowArticle = ({ article }: any) => {
       }
     });
   },[])
+
   return (
-    <div className="article-container">
+    <div className={`${isJsonContent ? "" : "article-container"}`}>
       <div className="flex flex-col pb-2 mb-2 border-b border-[#e3e3e3]">
         <h2 className="font-semibold py-1">{article?.title}</h2>
         <div className="flex w-[100%] justify-between gap-[10px] pb-0 items-center">
           <div className="flex text-sm font-normal dark:text-[#9B9B9B] news gap-2 whitespace-nowrap py-1 text-[#444746]">
             {formatDate(article?.updatedAt)}
           </div>
-          <div className="flex gap-2">
-          </div>
+          <div className="flex gap-2"></div>
         </div>
       </div>
-      {article?.content && parser(article.content)}
+      {isJsonContent
+        ? parserReact(parse({ blocks: article?.jsonContent?.blocks }))
+        : article?.content && parserReact(article.content)
+      }
     </div>
   );
 }

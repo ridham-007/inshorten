@@ -46,7 +46,7 @@ export default function ContactForm() {
           />
 
           <div className="flex justify-center">
-            <Button className="w-[80px] bg-black text-white hover:bg-black hover:text-white capitalize">
+            <Button className="w-[80px] !bg-black !text-white hover:bg-black hover:text-white capitalize">
               Submit
             </Button>
           </div>

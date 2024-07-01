@@ -1,11 +1,10 @@
-import { notFound, useRouter } from "next/navigation";
-// import { GetPopularNews, GetRecentNews, LoadContentUsingSlug } from "./actions";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import CategoryWiseTopNews, { CategoryWiseTopNewsSkeleton } from "@/components/category-wise-top-news";
 import ShowArticle, { ArticleSkeleton } from "@/components/show-article";
 import DynamicNewsWall, { DynamicNewsWallSkeleton } from "@/components/dynamic-news-wall";
 import { Metadata, ResolvingMetadata } from "next";
-import { getArticleWithPage, getPopularNews, getRecentNews } from "../_actions/article";
+import { getDataBasedOnSlug, getMetaDataBasedOnSlug, getPopularNews, getRecentNews } from "../_actions/article";
 import AboutUs from "@/components/about-us";
 import PrivacyPolicy from "@/components/privacy-policy";
 import ContactForm from "@/components/contact-form";
@@ -114,26 +113,19 @@ export async function generateMetadata(
       return getMetaDataOfDisclaimer();
     default: {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/common/meta-data/${path}`,
-          {
-            next: { revalidate: 10 },
-          }
-        );
-        const responseData = await res.json();
-        const { metaData } = responseData?.data;
-
-        return {
+        const data = await getMetaDataBasedOnSlug(`${path}`);
+        const { metaData } = data?.data;
+        return {  
           title: metaData?.name || metaData?.title || "InShorten",
           description: metaData?.seo_description || metaData?.description || "InShorten",
           keywords: metaData?.keywords && [...metaData?.keywords],
           openGraph: {
-            url: metaData?.openGraph?.url || metaData?.openGraph?.ogUrl,
-            type: metaData?.openGraph?.type || metaData?.openGraph?.ogType,
-            title: metaData?.openGraph?.title || metaData?.openGraph?.ogTitle,
-            locale: metaData?.openGraph?.locale || metaData?.openGraph?.ogLocale,
-            siteName: metaData?.openGraph?.site_name || metaData?.openGraph?.ogSiteName,
-            description: metaData?.openGraph?.description || metaData?.openGraph?.ogDescription,
+            ...((metaData?.openGraph?.title || metaData?.openGraph?.ogTitle) && { title: metaData?.openGraph?.title || metaData?.openGraph?.ogTitle }),
+            ...((metaData?.openGraph?.description || metaData?.openGraph?.ogDescription) && { description: metaData?.openGraph?.description || metaData?.openGraph?.ogDescription }),
+            ...((metaData?.openGraph?.url || metaData?.openGraph?.ogUrl) && { url: metaData?.openGraph?.url || metaData?.openGraph?.ogUrl }),
+            ...((metaData?.openGraph?.type || metaData?.openGraph?.ogType) && { type: metaData?.openGraph?.type || metaData?.openGraph?.ogType || '' }),
+            ...((metaData?.openGraph?.locale || metaData?.openGraph?.ogLocale) && { locale: metaData?.openGraph?.locale || metaData?.openGraph?.ogLocale }),
+            ...((metaData?.openGraph?.site_name || metaData?.openGraph?.ogSiteName) && { siteName: metaData?.openGraph?.site_name || metaData?.openGraph?.ogSiteName }),
             images: [{
               url: metaData?.openGraph?.ogImage || ""
             }],
@@ -165,7 +157,6 @@ export default function Slug({
   params: { slug: string[] };
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  console.log(searchParams, params)
   const renderShimmerContent = () => {
     if (Array.isArray(params.slug) && params.slug.length > 0) {
       const dashCount = (params.slug[0].match(/-/g) || [])?.length;
@@ -197,7 +188,21 @@ export default function Slug({
         return <Disclaimer />;
       default: {
         try {
-          const data = await getArticleWithPage(`${params.slug[0]}`);
+          const data = await getDataBasedOnSlug(`${params.slug[0]}`, 1, 12);
+          if (data?.data?.type === "article") {
+            return <ShowArticle article={data?.data?.article[0]}/>;
+          } 
+          else {
+            let articles = data?.data?.article || [];
+            articles = [...articles].filter(article=>article?.status);
+            articles = [...articles].sort((a: any, b: any) => {
+              const diff =
+              new Date(b?.updatedAt).getTime() -
+              new Date(a?.updatedAt).getTime();
+              return diff;
+            });
+            return <CategoryWiseTopNews articles={articles} category={params.slug[0]} total={data?.data?.total} />;
+          }
         } catch (e) {
           return notFound();
         }
@@ -210,7 +215,6 @@ export default function Slug({
       <section className="flex flex-col flex-1 basis-[100%] sm:basis-[68%]">
         {Array.isArray(params.slug) && params.slug.length > 0 && (
           <Suspense fallback={renderShimmerContent()}>
-            {/* <LoadContentUsingSlug slug={params.slug[0]} /> */}
             {renderContent()}
           </Suspense>
         )}

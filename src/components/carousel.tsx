@@ -31,7 +31,7 @@ export default function Carousel({ slides }: any) {
       >
         {slides?.map((slide: any) => (
           <div key={slide.id} className="w-full flex-shrink-0 flex">
-            <div className="p-4 text-[14px] line-clamp-1 cursor-pointer">
+            <div className="p-4 text-[14px] line-clamp-1 cursor-pointer font-bold">
               <Link href={slide.slug}>{slide.title}</Link>
             </div>
           </div>

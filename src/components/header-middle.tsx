@@ -30,7 +30,7 @@ export default function HeaderMiddle() {
             <Link href={item.link} key={index} onClick={() => handleChange(index)}>
               <p
                 className={`nav-item ${
-                  pathname === item.link ? "selected" : ""
+                  pathname === item.link ?  "border-b-2 border-[#1968fe] font-bold text-[#1968fe]" : "hover:text-[#1968fe] hover:border-b-2 hover:border-[#1968fe]"
                 }`}
               >
                 {item.text}
