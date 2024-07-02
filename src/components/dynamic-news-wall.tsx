@@ -3,6 +3,7 @@ import Link from "next/link";
 import ImageWithFallback from "./image-with-fallback";
 import { useRouter } from "next/navigation";
 import { GoChevronRight } from "react-icons/go";
+import { useEffect, useState } from "react";
 
 export interface NewsWallProps {
   title: string;
@@ -15,6 +16,8 @@ export interface NewsWallProps {
 }
 export default function DynamicNewsWall(props: NewsWallProps) {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
   const formatDate = (date: string): string => {
     const options: Intl.DateTimeFormatOptions = {
       weekday: "long",
@@ -24,6 +27,11 @@ export default function DynamicNewsWall(props: NewsWallProps) {
     };
     return new Date(date)?.toLocaleDateString("en-US", options);
   };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <></>;
 
   return (
     <div className="flex flex-col h-auto p-5 md:border-l-[1px] news">
@@ -46,7 +54,7 @@ export default function DynamicNewsWall(props: NewsWallProps) {
             }}
           >
             <hr className="py-2 text-[#e3e3e3]"></hr>
-            <div
+            <label
               key={`${cur.title}-${index}`}
               className="flex flex-row items-start cursor-pointer gap-[10px]"
             >
@@ -57,19 +65,19 @@ export default function DynamicNewsWall(props: NewsWallProps) {
                   </p>
                 </div>
               </div>
-              <div className="flex basis-[20%] overflow-hidden w-full h-full">
+              <div className="flex basis-[20%] overflow-hidden w-full h-full rounded-md">
                 <ImageWithFallback
                   alt={`article-placeholder-${index}`}
                   src={cur?.featureImage}
                 ></ImageWithFallback>
               </div>
-            </div>
-            <div className="flex text-sm font-normal dark:text-[#9B9B9B] news gap-2 whitespace-nowrap py-1 text-[#444746]">
+            </label>
+            <label className="flex text-sm font-normal dark:text-[#9B9B9B] news gap-2 whitespace-nowrap py-1 text-[#444746]">
               {formatDate(cur?.updatedAt)}
               <Link href={"#"} className="font-medium">
                 Read
               </Link>
-            </div>
+            </label>
           </Link>
         );
       })}

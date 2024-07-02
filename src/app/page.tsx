@@ -17,8 +17,8 @@ export default async function Home() {
         </Suspense>
         <Suspense fallback={<DynamicNewsWallSkeleton label="Recent" />}>
           {(async function () {
-            const articleResponse = await getRecentNews(1, true);
-            return <DoNotMiss1 {...articleResponse?.data[0]} />;
+            const articleResponse = await getRecentNews(2, true);
+            return <DoNotMiss1 {...articleResponse?.data[1]} />;
           })()}
         </Suspense>
         <Suspense fallback={<DynamicNewsWallSkeleton label="Recent" />}>
