@@ -48,7 +48,7 @@ export async function getPopularNews(limit: number = 0, content: boolean = false
   }
 }
 
-export async function getCategoryWithRecent(limit: number = 0) {
+export async function getRecentArticleInCategory(limit: number = 0) {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/common/get-category-with-recent/${process.env.NEXT_PUBLIC_SITE_ID}/${limit}`,
       {

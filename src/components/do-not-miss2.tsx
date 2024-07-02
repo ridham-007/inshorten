@@ -2,20 +2,15 @@
 import { Article } from "@/lib/type-identifiers";
 import React, { useEffect } from "react";
 import featureImage from "../../public/preview.jpg";
-export default function DoNotMiss2({data}: any) {
-  const description = "10 Scandalous Love Triangle Captivating the public";
-  const dis =
-    "Lorem ipsum dolor amet, consectetur adipisicing elit. Ea, Lore dolor amet, consectetur adipisicing elit. Dignissimos, alias. Lorem ipsum dolor amet, consectetur adipisicing elit. Ea, Lore dolor amet";
-  
+export default function DoNotMiss2({articles}: any) {
   const handleWindowSizeChange = () => {
     if (!!window) {
       for(let i=0;i<3;i++){
-        createTitleChild(`parent-${i}`);
+        createTitleChild(`parent-${i}`, articles[i]?.title);
       }
     }
   };
 
-  console.log(data, "fd")
 
   const createDummyRef = () => {
     let div = document.createElement("div");
@@ -29,12 +24,12 @@ export default function DoNotMiss2({data}: any) {
     return div;
   };
 
-  const createTitleChild = (key: string) => {
+  const createTitleChild = (key: string, title: string) => {
     const parent = document.getElementById(key);
     while (parent?.hasChildNodes()) {
       parent?.lastChild && parent?.removeChild(parent.lastChild);
     }
-    const content = description;
+    const content = title;
     const words = `${content}`.split(" ");
     const innerWidth = window?.innerWidth;
     let scrollWidth = parent?.scrollWidth ?? 0;
@@ -74,7 +69,7 @@ export default function DoNotMiss2({data}: any) {
 
   return (
     <div className="flex flex-col sm:flex-row w-full">
-      {data?.map((curr: any, index: number) => {
+      {articles?.map((curr: any, index: number) => {
           return (
             <div
               key={index}
