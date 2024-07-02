@@ -2,12 +2,25 @@
 import { Article } from "@/lib/type-identifiers";
 import React from "react";
 import featureImage from "../../public/preview.jpg";
+import Link from "next/link";
 export default function DoNotMiss3(props: Article) {
   return (
-    <div className="flex px-3">
+    <Link
+      target="_blank"
+      href={`${props?.slug}`}
+      className="flex px-3"
+      onClick={(e) => {
+        if (!e.ctrlKey && !e.metaKey) {
+          e.preventDefault();
+          location.href = props?.slug;
+        }
+      }}
+    >
       <div
         className="flex flex-col w-full h-[400px] sm:h-[500px] rounded-xl bg-cover bg-center bg-no-repeat px-4 py-4"
-        style={{ backgroundImage: `url(${props.featureImage || featureImage.src})` }}
+        style={{
+          backgroundImage: `url(${props.featureImage || featureImage.src})`,
+        }}
       >
         <div className="flex flex-1"></div>
         <button
@@ -23,6 +36,6 @@ export default function DoNotMiss3(props: Article) {
           {props?.description}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

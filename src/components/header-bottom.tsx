@@ -41,7 +41,12 @@ export default function HeaderBottom({data}: any) {
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 {data?.map((item: any) => (
-                  <Link key={item.id} href={`/${item.slug}`} passHref>
+                  <Link key={item.id} href={`/${item.slug}`} target="_blank" onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      location.href = item.slug;
+                    }
+                  }} passHref>
                     <div
                       className={`${
                         highlightSelectedTab(item.slug)

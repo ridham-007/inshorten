@@ -20,7 +20,12 @@ export default function HeaderMiddle() {
   return (
     <section className="flex flex-wrap w-full px-[20px] py-[5px] justify-between items-center gap-[15px]">
       <div className="block w-[200px] h-[50px] relative">
-        <Link href="/">
+        <Link href="/" target="_blank" onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                location.href = "/";
+              }
+            }}>
           <Logo place="header"></Logo>
         </Link>
       </div>

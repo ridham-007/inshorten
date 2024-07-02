@@ -2,7 +2,7 @@
 import { Article } from "@/lib/type-identifiers";
 import React, { useEffect } from "react";
 import featureImage from "../../public/preview.jpg";
-export default function DoNotMiss2(props: Article) {
+export default function DoNotMiss2({data}: any) {
   const description = "10 Scandalous Love Triangle Captivating the public";
   const dis =
     "Lorem ipsum dolor amet, consectetur adipisicing elit. Ea, Lore dolor amet, consectetur adipisicing elit. Dignissimos, alias. Lorem ipsum dolor amet, consectetur adipisicing elit. Ea, Lore dolor amet";
@@ -14,6 +14,8 @@ export default function DoNotMiss2(props: Article) {
       }
     }
   };
+
+  console.log(data, "fd")
 
   const createDummyRef = () => {
     let div = document.createElement("div");
@@ -72,9 +74,7 @@ export default function DoNotMiss2(props: Article) {
 
   return (
     <div className="flex flex-col sm:flex-row w-full">
-      {Array(3)
-        .fill(null)
-        ?.map((_, index) => {
+      {data?.map((curr: any, index: number) => {
           return (
             <div
               key={index}
@@ -86,17 +86,17 @@ export default function DoNotMiss2(props: Article) {
             >
               <div
                 className="flex h-[280px] w-full bg-cover bg-center bg-no-repeat relative"
-                style={{ backgroundImage: `url(${featureImage.src})` }}
+                style={{ backgroundImage: `url(${curr.featureImage || featureImage.src})` }}
               ></div>
               <div
                 className="flex flex-col w-full px-1 justify-center items-center whitespace-pre mt-[-15px] z-10"
                 id={`parent-${index.toString()}`}
               ></div>
               <div className="my-[7px] uppercase text-red-600 font-semibold text-center">
-                | {"Sports"} |
+                | {curr?.category?.name} |
               </div>
               <div className="my-[5px] w-[100%] line-clamp-3 text-ellipsis overflow-hidden">
-                {dis}
+                  {curr?.description}
               </div>
             </div>
           );

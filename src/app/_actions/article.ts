@@ -1,10 +1,10 @@
 "use server"
 
-export async function getRecentNews(limit: number = 0) {
+export async function getRecentNews(limit: number = 0, content: boolean = false) {
   try {
     let url = "";
     if(limit){
-      url = `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/recent/${limit}`
+      url = `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/recent/${limit}/${content}`
     }else{
       url = `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/recent`
     }
@@ -24,10 +24,15 @@ export async function getRecentNews(limit: number = 0) {
   }
 }
 
-export async function getPopularNews() {
+export async function getPopularNews(limit: number = 0, content: boolean = false) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/popular`,
+    let url = "";
+    if(limit){
+      url = `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/popular/${limit}/${content}`
+    }else{
+      url = `${process.env.NEXT_PUBLIC_API_URL}/common/article/${process.env.NEXT_PUBLIC_SITE_ID}/popular`
+    }
+    const res = await fetch(url,
       {
         next: { revalidate: 60 },
       }
@@ -36,6 +41,23 @@ export async function getPopularNews() {
     const { articles = [] } = responseData;
     return {
       data: articles,
+      success: true
+    }
+  } catch (e: any) {
+      console.error(e);
+  }
+}
+
+export async function getCategoryWithRecent(limit: number = 0) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/common/get-category-with-recent/${process.env.NEXT_PUBLIC_SITE_ID}/${limit}`,
+      {
+        next: { revalidate: 60 },
+      }
+    );
+    const responseData = await res.json();
+    return {
+      data: responseData?.data,
       success: true
     }
   } catch (e: any) {
