@@ -8,7 +8,7 @@ export default function DoNotMiss3(props: Article) {
     <Link
       target="_blank"
       href={`${props?.slug}`}
-      className="flex px-3"
+      className="flex px-2"
       onClick={(e) => {
         if (!e.ctrlKey && !e.metaKey) {
           e.preventDefault();

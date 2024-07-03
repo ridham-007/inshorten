@@ -39,14 +39,13 @@ export default function CategoryWiseTopNews({ articles, category, total }: any) 
             target="_blank"
             key={`CategoryWiseTopNews-${index}`}
             className="flex flex-col flex-1 lg:basis-[32%] sm:basis-[49%] basis-[100%] lg:max-w-[32%] sm:max-w-[49%] cursor-pointer p-1 rounded-sm"
-            // onClick={() => handleArticleOpen(item)}
             onClick={(e) => {
               if (!e.ctrlKey && !e.metaKey) {
                 e.preventDefault();
                 location.href = item?.slug;
               }
             }}
-          >
+        >
             <div className="flex flex-col basis-[90%] flex-1 px-2 py-3  space-y-1.5 p-6">
               <div className="flex basis-[70%] flex-1 flex-col font-semibold leading-none tracking-div">
                 <div className="block w-full h-full relative">

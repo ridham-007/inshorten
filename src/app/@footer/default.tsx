@@ -94,18 +94,19 @@ export default function Footer() {
   return (
     <footer className="flex flex-col h-auto w-full bg-foreground py-5 px-5 md:px-10 mt-5 bg-[#202028]">
       <div className="flex">
-        <Link
-          href="/"
-          target="_blank"
+        <div
+          className="cursor-pointer"
           onClick={(e) => {
-            if (!e.ctrlKey && !e.metaKey) {
-              e.preventDefault();
+            e.preventDefault();
+            if (e.ctrlKey || e.metaKey) {
+              window.open("/", "_blank");
+            } else {
               location.href = "/";
             }
           }}
         >
           <Logo place="footer"></Logo>
-        </Link>
+        </div>
       </div>
       <div className="flex flex-col lg:flex-row mt-5">
         <div className="flex flex-col w-full lg:w-[33%] px-4">
@@ -126,19 +127,20 @@ export default function Footer() {
                   key={index}
                   className="text-[12px] md:text-[13px] my-1 text-white"
                 >
-                  <Link
-                    href={cur?.url}
-                    target="_blank"
+                  <div
+                    key={index}
                     onClick={(e) => {
-                      if (!e.ctrlKey && !e.metaKey) {
-                        e.preventDefault();
+                      e.preventDefault();
+                      if (e.ctrlKey || e.metaKey) {
+                        window.open(cur?.url, "_blank");
+                      } else {
                         location.href = cur?.url;
                       }
                     }}
-                    className="footer-item"
+                    className="footer-item cursor-pointer"
                   >
                     {cur?.name}
-                  </Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -151,20 +153,20 @@ export default function Footer() {
                   key={index}
                   className="text-[14px] md:text-[16px] py-[2px] text-white"
                 >
-                  <Link
-                    href={cur?.slug}
+                  <div
                     key={index}
-                    target="_blank"
                     onClick={(e) => {
-                      if (!e.ctrlKey && !e.metaKey) {
-                        e.preventDefault();
+                      e.preventDefault();
+                      if (e.ctrlKey || e.metaKey) {
+                        window.open(cur?.slug, "_blank");
+                      } else {
                         location.href = cur?.slug;
                       }
                     }}
-                    className="footer-item"
+                    className="footer-item cursor-pointer"
                   >
                     {cur?.name}
-                  </Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -178,7 +180,7 @@ export default function Footer() {
             <input
               type="text"
               placeholder="contact@inshorten.com"
-              className="w-full py-3 bg-transparent text-white pl-5 text-sm sm:text-[16px]"
+              className="w-full py-3 bg-transparent text-white pl-5 text-sm sm:text-[16px] focus:outline-none"
             />
             <Link
               href="mailto:contact@inshorten.com"

@@ -2,6 +2,7 @@
 import { Article } from "@/lib/type-identifiers";
 import React, { useEffect } from "react";
 import featureImage from "../../public/preview.jpg";
+import Link from "next/link";
 export default function DoNotMiss2({articles}: any) {
   const handleWindowSizeChange = () => {
     if (!!window) {
@@ -71,13 +72,21 @@ export default function DoNotMiss2({articles}: any) {
     <div className="flex flex-col sm:flex-row w-full">
       {articles?.map((curr: any, index: number) => {
           return (
-            <div
+            <Link
+              href={curr.slug}
+              target="_blank"
               key={index}
               className={`flex flex-col basis-[100%] lg:basis-[33.33%] border-slate-600 p-3 ${
                 index != 2
                   ? "sm:border-r-[1px] border-b-[1px] sm:border-b-0"
                   : ""
               }`}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey) {
+                  e.preventDefault();
+                  location.href = curr.slug;
+                }
+              }}
             >
               <div
                 className="flex h-[280px] w-full bg-cover bg-center bg-no-repeat relative"
@@ -93,7 +102,7 @@ export default function DoNotMiss2({articles}: any) {
               <div className="my-[5px] w-[100%] line-clamp-3 text-ellipsis overflow-hidden">
                   {curr?.description}
               </div>
-            </div>
+            </Link>
           );
         })}
     </div>
