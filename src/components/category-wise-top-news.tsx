@@ -57,7 +57,7 @@ export default function CategoryWiseTopNews({ articles, category, total }: any) 
                 </div>
               </div>
               {item?.description && (
-                <div className="flex w-[100%] text-ellipsis line-clamp-3 text-sm text-muted-foreground">
+                <div className="w-[100%] text-ellipsis line-clamp-3 text-sm text-muted-foreground">
                   {item?.description}
                 </div>
               )}
