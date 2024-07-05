@@ -39,33 +39,8 @@ export function HeaderTopSkeleton() {
         <div className="flex flex-1 justify-between items-center">
           <div className="flex flex-1 mr-5 h-6 font-bold bg-[#d1d5db] animate-pulse rounded-md"></div>
           <div className="hidden md:flex gap-[3px]">
-            {/* <Button variant="outline">
-              <ChevronLeft className="h-43 w-4" />
-            </Button>
-
-            <Button variant="outline">
-              <ChevronRight className="h-4 w-4" />
-            </Button> */}
           </div>
         </div>
-
-        {/* <div className="flex items-center gap-[25px]">
-          <div className="hidden md:flex border-l-[1px] border-gray-400 h-[20px]"></div>
-          <div className="flex gap-[10px]">
-            <Button variant="outline">
-              <Facebook className="h-5 w-5" />
-            </Button>
-            <Button variant="outline">
-              <Twitter className="h-5 w-5" />
-            </Button>
-            <Button variant="outline">
-              <Youtube className="h-5 w-5" />
-            </Button>
-            <Button variant="outline">
-              <Instagram className="h-5 w-5" />
-            </Button>
-          </div>
-        </div> */}
       </div>
     </section>
   );

@@ -240,4 +240,10 @@
     overflow: hidden;
     text-align: justify;
   }
+
+  @media only screen and (max-width: 450px) {
+    .two-column-container {
+        column-count: 1;
+    }
+  }
   

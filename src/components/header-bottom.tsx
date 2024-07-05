@@ -1,20 +1,15 @@
 "use client";
 import Link from "next/link";
-import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill, BsHammer } from "react-icons/bs";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseSharp } from "react-icons/io5";
 
-const SEPARATION_LENGTH = 9;
-
-export default function HeaderBottom({data}: any) {
+export default function HeaderBottom({ data }: any) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const highlightSelectedTab = (data: any) => {
-    return `${
-      pathname === `/${data}` ? "!bg-black !text-white" : null
-    }`;
+    return `${pathname === `/${data}` ? "!bg-black !text-white" : null}`;
   };
   return (
     <nav className="bg-white">
@@ -24,12 +19,12 @@ export default function HeaderBottom({data}: any) {
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white bg-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
               {!isOpen ? (
-                <RxHamburgerMenu  className="block h-6 w-6" />
+                <RxHamburgerMenu className="block h-6 w-6" />
               ) : (
                 <IoCloseSharp className="block h-6 w-6" />
               )}
@@ -48,9 +43,9 @@ export default function HeaderBottom({data}: any) {
                     }
                   }} passHref>
                     <div
-                      className={`${
-                        highlightSelectedTab(item.slug)
-                      } hover:bg-gray-700 bg-[#f5f7fa] hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer`}
+                      className={`${highlightSelectedTab(
+                        item.slug
+                      )} hover:bg-gray-700 bg-[#f5f7fa] hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer`}
                     >
                       {item.name}
                     </div>

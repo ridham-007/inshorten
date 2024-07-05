@@ -16,7 +16,7 @@ export default function DoNotMiss1(props: Article) {
   }
 
   return (
-    <div className="flex flex-col md:flex-row w-full p-[20px] gap-3  rounded-xl">
+    <div className="flex flex-col md:flex-row w-full p-4 md:p-[20px] gap-3  rounded-xl">
       <div className="flex basis-[50%] flex-col gap-5 ">
         <div className="flex  text-[30px] font-bold">{props?.title}</div>
         <div className="flex flex-row gap-3 text-slate-500">
