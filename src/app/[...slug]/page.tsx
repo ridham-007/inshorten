@@ -115,10 +115,14 @@ export async function generateMetadata(
       try {
         const data = await getMetaDataBasedOnSlug(`${path}`);
         const { metaData } = data?.data;
-        return {  
-          title: metaData?.name || metaData?.title || "InShorten",
+        return {
+          title:((metaData?.openGraph?.title || metaData?.openGraph?.ogTitle ||  metaData?.name || metaData?.title) && (
+            metaData?.openGraph?.title || metaData?.openGraph?.ogTitle || metaData?.name || metaData?.title
+          )) || "InShorten",  
           description: metaData?.seo_description || metaData?.description || "InShorten",
-          keywords: metaData?.keywords && [...metaData?.keywords],
+          ...metaData?.keywords && {
+            keywords:metaData?.keywords,
+          },
           openGraph: {
             ...((metaData?.openGraph?.title || metaData?.openGraph?.ogTitle) && { title: metaData?.openGraph?.title || metaData?.openGraph?.ogTitle }),
             ...((metaData?.openGraph?.description || metaData?.openGraph?.ogDescription) && { description: metaData?.openGraph?.description || metaData?.openGraph?.ogDescription }),
