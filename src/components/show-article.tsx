@@ -35,7 +35,7 @@ const ShowArticle = ({ article }: any) => {
   },[])
 
   return (
-    <div className={`${isJsonContent ? "" : "article-container"}`}>
+    <div className={`${isJsonContent ? "article-container" : "article-container"}`}>
       <div className="flex flex-col pb-2 mb-2 border-b border-[#e3e3e3]">
         <h2 className="font-semibold py-1">{article?.title}</h2>
         <div className="flex w-[100%] justify-between gap-[10px] pb-0 items-center">
