@@ -40,7 +40,7 @@ export default function HeaderBottom({data}: any) {
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                {data.map((item: any) => (
+                {data?.map((item: any) => (
                   <Link key={item.id} href={`/${item.slug}`} passHref>
                     <div
                       className={`${
@@ -60,7 +60,7 @@ export default function HeaderBottom({data}: any) {
       {/* Mobile menu, toggle based on menu state */}
       <div className={`${isOpen ? "block" : "hidden"} sm:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          {data.map((item: any) => (
+          {data?.map((item: any) => (
             <Link key={item.id} href={`/${item.slug}`} passHref>
               <div
                 className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
