@@ -39,7 +39,7 @@ const ShowArticle = ({ article }: any) => {
       <div className="flex flex-col pb-2 mb-2 border-b border-[#e3e3e3]">
         <h2 className="font-semibold py-1">{article?.title}</h2>
         <div className="flex w-[100%] justify-between gap-[10px] pb-0 items-center">
-          <div className="flex text-sm font-normal dark:text-[#9B9B9B] news gap-2 whitespace-nowrap py-1 text-[#444746]">
+          <div className="flex text-sm font-normal news gap-2 whitespace-nowrap py-1 text-[#444746]">
             {formatDate(article?.updatedAt)}
           </div>
           <div className="flex gap-2"></div>

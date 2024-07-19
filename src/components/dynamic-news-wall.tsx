@@ -35,7 +35,7 @@ export default function DynamicNewsWall(props: NewsWallProps) {
 
   return (
     <div className="flex flex-col h-auto p-5 md:border-l-[1px] news blog-list">
-      <div className="flex items-center text-[20px] font-semibold md:text-[20px] text-foreground pb-2 cursor-pointer dark:text-[#E5E5E5]">
+      <div className="flex items-center text-[20px] font-semibold md:text-[20px] text-foreground pb-2 cursor-pointer">
         {props.title}
         <GoChevronRight size={24} className="ml-3" />
       </div>
@@ -60,7 +60,7 @@ export default function DynamicNewsWall(props: NewsWallProps) {
             >
               <div className="flex flex-col basis-[80%] min-h-[40px] gap-[5px] overflow-hidden">
                 <div className="flex flex-grow font-medium basis-full flex-col">
-                  <p className="text-[14px] text-foreground dark:text-[#C9C9C9] md:text-[14px] text-ellipsis line-clamp-2 font-semibold">
+                  <p className="text-[14px] text-foreground md:text-[14px] text-ellipsis line-clamp-2 font-semibold">
                     {cur?.title}
                   </p>
                 </div>
@@ -72,7 +72,7 @@ export default function DynamicNewsWall(props: NewsWallProps) {
                 ></ImageWithFallback>
               </div>
             </label>
-            <label className="flex text-sm font-normal dark:text-[#9B9B9B] news gap-2 whitespace-nowrap py-1 text-[#444746]">
+            <label className="flex text-sm font-normal news gap-2 whitespace-nowrap py-1 text-[#444746]">
               {formatDate(cur?.updatedAt)}
               <Link href={"#"} className="font-medium">
                 Read

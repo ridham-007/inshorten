@@ -1,7 +1,7 @@
 
 export default function PrivacyPolicy() {
     return (
-        <div className="flex flex-col w-full h-full p-[20px] dark:bg-[#202028] dark:text-[#cecdcd] rounded-xl border bg-card text-card-foreground shadow">
+        <div className="flex flex-col w-full h-full p-[20px] rounded-xl border bg-card text-card-foreground shadow">
             <h1 className="flex justify-center text-[26px] font-bold p-[20px]">Privacy Policy</h1>
             <p>Last updated: April 16, 2024</p><br />
             <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p><br />
