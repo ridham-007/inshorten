@@ -34,7 +34,7 @@ export default function DynamicNewsWall(props: NewsWallProps) {
   if (!mounted) return <></>;
 
   return (
-    <div className="flex flex-col h-auto p-5 md:border-l-[1px] news">
+    <div className="flex flex-col h-auto p-5 md:border-l-[1px] news blog-list">
       <div className="flex items-center text-[20px] font-semibold md:text-[20px] text-foreground pb-2 cursor-pointer dark:text-[#E5E5E5]">
         {props.title}
         <GoChevronRight size={24} className="ml-3" />
