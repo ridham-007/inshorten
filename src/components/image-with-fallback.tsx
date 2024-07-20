@@ -4,6 +4,7 @@ import Image from "next/image";
 export interface ImageWithFallbackProps {
   alt: string;
   src: string;
+  className?: string;
 }
 const ImageWithFallback = (props: ImageWithFallbackProps) => {
   const [imgSrc, setImgSrc] = useState(props.src);
@@ -17,7 +18,7 @@ const ImageWithFallback = (props: ImageWithFallbackProps) => {
       unoptimized={true}
       priority
       layout="responsive"
-      className="flex w-full h-0 min-h-full object-fill rounded-sm"
+      className={`${props.className ? props.className : "flex w-full h-0 min-h-full object-fill rounded-sm"}`}
       onError={() => {
         setImgSrc("/preview.jpg");
       }}
