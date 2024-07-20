@@ -39,6 +39,14 @@ export default function CategoryWiseTopNews({
     setListCompleted(total === articleList.length || false);
   }, [articleList]);
 
+  const truncateText = (text: string, wordLimit: number): string => {
+    const words = text.split(" ");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + "...";
+    }
+    return text;
+  };
+
   return (
     <>
       <div className="flex w-full flex-wrap justify-start gap-2">
@@ -69,12 +77,12 @@ export default function CategoryWiseTopNews({
                   </div>
                   {item?.description && (
                     <div className="text-[14px] text-gray-600 font-light mb-5">
-                      {item?.description}
+                      {truncateText(item?.description, 50)}
                     </div>
                   )}
                 </div>
               </div>
-              <div className="flex p-3 mt-auto gap-1 ">
+              <div className="flex p-3 mt-auto gap-1">
                 <Image
                   src="/favicon.ico"
                   width={25}
