@@ -35,10 +35,10 @@ export default function RootLayout({
           "@context": "https://schema.org/",
           "@type": "WebSite",
           "name": "InShorten",
-          "url": "https://www.inshorten.com",
+          "url": "https://inshorten.com",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://www.inshorten.com/about-us{search_term_string}",
+            "target": "https://inshorten.com/about-us{search_term_string}",
             "query-input": "required name=search_term_string"
           }
         })}

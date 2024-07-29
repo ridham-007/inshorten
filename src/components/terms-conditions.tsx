@@ -21,7 +21,7 @@ const terms = [
         value: [
             <>
                 We take your privacy seriously. Our{' '}
-                <a href="https://www.inshorten.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#1968fe] font-medium cursor-pointer">Privacy Policy</a>{' '}
+                <a href="https://inshorten.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#1968fe] font-medium cursor-pointer">Privacy Policy</a>{' '}
                 explains how we collect, use, and protect your personal information.
             </>
         ],
