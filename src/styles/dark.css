@@ -1,0 +1,35 @@
+html[data-theme="dark"] {
+  --primary-text-color: #fff;
+  --secondary-bg-color: #0d2132;
+  --primary-black-color: #000;
+  --secondary-bg-black-color: #000;
+  --secondary-bg-header-top: #0d2132;
+  --secondary-bg-header-top-button: #fff;
+  --primary-text-header-top-button: #000;
+  --secondary-bg-header-bottom-button: #fff;
+  --primary-text-header-bottom-button: #000;
+  --primary-text-header-bottom-button-mobile: #d1d5db;
+  --primary-gray-text-color: #afafaf;
+  --primary-block-text-color: #afb0b2;
+  --primary-red-text-color: #dc2626;
+  --primary-white-text-color: #fff;
+  --secondary-bg-contact-color: #fff;
+  --primary-text-contact-color: #000;
+  --primary-blue-color: #1968fe;
+  --primary-text-grey-color: #a8a8a9;
+  --primary-border-gray-color: #fff;
+  --primary-text-gray-color: #e3e3e3;
+  --secondary-bg-skeleton-color: #d1d5db;
+  --primary-text-white-color: #fff;
+  --secondary-bg-footer-color: #403f45f9;
+  --secondary-bg-footer: #202028;
+  --primary-green-color: #050;
+  --primary-blue-hover-color: #2563eb;
+  --primary-slider-color: #93c5fd;
+  --primary-instagram-from-color: #f1d424;
+  --primary-instagram-via-color: #f42e7e;
+  --primary-instagram-to-color: #8a1bb5;
+  --primary-facebook-color: #36528c;
+  --primary-twitter-color: #2c313c;
+  --primary-youtube-color: #e51212;
+}

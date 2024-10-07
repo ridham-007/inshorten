@@ -53,7 +53,7 @@ export default function DynamicNewsWall(props: NewsWallProps) {
               }
             }}
           >
-            <hr className="py-2 text-[#e3e3e3]"></hr>
+            <hr className="py-2 text-own_text_grey_color_primary"></hr>
             <label
               key={`${cur.title}-${index}`}
               className="flex flex-row items-start cursor-pointer gap-[10px]"
@@ -72,7 +72,7 @@ export default function DynamicNewsWall(props: NewsWallProps) {
                 ></ImageWithFallback>
               </div>
             </label>
-            <label className="flex text-sm font-normal news gap-2 whitespace-nowrap py-1 text-[#444746]">
+            <label className="flex text-sm font-normal news gap-2 whitespace-nowrap py-1 text-own_gray_text_color_primary">
               {formatDate(cur?.updatedAt)}
               <Link href={"#"} className="font-medium">
                 Read
@@ -89,7 +89,7 @@ export function DynamicNewsWallSkeleton(props: { label: string }) {
   return (
     <div className="flex flex-col h-auto p-5 border-l-[1px]">
       <div className="h-[30px] w-full md:h-[33px] items-center">
-        <div className="flex h-6 flex-1 bg-[#d1d5db] rounded-full animate-pulse"></div>
+        <div className="flex h-6 flex-1 bg-own_skeleton_color_primary rounded-full animate-pulse"></div>
       </div>
       {Array(5)
         .fill(null)
@@ -102,8 +102,8 @@ export function DynamicNewsWallSkeleton(props: { label: string }) {
                 className="flex flex-row gap-[10px]"
               >
                 <div className="flex flex-col flex-1 basis-[80%] justify-around">
-                  <p className="h-[14px] bg-[#d1d5db] rounded-full animate-pulse"></p>
-                  <p className="h-[14px] bg-[#d1d5db] rounded-full animate-pulse"></p>
+                  <p className="h-[14px] bg-own_skeleton_color_primary rounded-full animate-pulse"></p>
+                  <p className="h-[14px] bg-own_skeleton_color_primary rounded-full animate-pulse"></p>
                 </div>
                 <div className="flex basis-[20%] overflow-hidden w-full h-full">
                   <ImageWithFallback
@@ -113,7 +113,7 @@ export function DynamicNewsWallSkeleton(props: { label: string }) {
                 </div>
               </div>
               <div className="flex h-7 py-1">
-                <p className="flex flex-1 h-4 max-w-[50%] bg-[#d1d5db] rounded-full animate-pulse"></p>
+                <p className="flex flex-1 h-4 max-w-[50%] bg-own_skeleton_color_primary rounded-full animate-pulse"></p>
               </div>
             </div>
           );

@@ -22,14 +22,17 @@ export default function CategoryBannerTypeTwo(
   const router = useRouter();
   return (
     <div className="flex flex-col w-full p-[20px] gap-[15px]">
-      <div className="flex justify-between items-center border-b border-[#e3e3e3] pb-2">
+      <div className="flex justify-between items-center border-b border-own_border_gray_color_primary pb-2">
         <Link
           href={`/${props.slug ?? ""}`}
-          className="flex items-center text-[20px] text-[#050] font-semibold cursor-pointer"
+          className="flex items-center text-[20px] text-own_green_color_primary font-semibold cursor-pointer"
         >
           {props.title.trim()} <GoChevronRight size={24} className="ml-3" />
         </Link>
-        <Link href={`/${props.slug??''}`} className="text-[16px] font-semibold text-foreground cursor-pointer">
+        <Link
+          href={`/${props.slug ?? ""}`}
+          className="text-[16px] font-semibold text-foreground cursor-pointer"
+        >
           See all
         </Link>
       </div>
@@ -39,7 +42,7 @@ export default function CategoryBannerTypeTwo(
             <div
               key={`CategoryWiseTopNews-${index}`}
               className="flex flex-col flex-1 cursor-pointer rounded-sm"
-              onClick={()=>router.push(`/${item.slug}`)}
+              onClick={() => router.push(`/${item.slug}`)}
             >
               <div className="flex flex-col basis-[90%] flex-1 px-2 py-3 space-y-1.5 p-6">
                 <div className="flex basis-[70%] flex-1 flex-col font-semibold leading-none tracking-tight">
@@ -62,7 +65,10 @@ export default function CategoryBannerTypeTwo(
         <div className="flex flex-col basis-full flex-0 gap-[10px]">
           {props.news.slice(1, 5).map((cur: any, index: number) => (
             <div key={index} className="flex flex-col">
-              <Link href={`/${cur.slug}`} className="flex gap-2 overflow-hidden cursor-pointer">
+              <Link
+                href={`/${cur.slug}`}
+                className="flex gap-2 overflow-hidden cursor-pointer"
+              >
                 <div className="bloc min-w-[80px] max-w-[80px] rounded-sm object-fill">
                   <ImageWithFallback
                     src={cur.featureImage}
@@ -75,7 +81,7 @@ export default function CategoryBannerTypeTwo(
                   </p>
                 </div>
               </Link>
-              <hr className="my-[10px] text-[#e3e3e3]" />
+              <hr className="my-[10px] text-own_text_grey_color_primary" />
             </div>
           ))}
         </div>
@@ -87,9 +93,9 @@ export default function CategoryBannerTypeTwo(
 export function CategoryBannerTypeTwoSkeleton() {
   return (
     <div className="flex flex-col w-full p-[20px] gap-[15px] rounded-xl border bg-card text-card-foreground shadow">
-      <div className="flex justify-between items-center border-b border-[#e3e3e3] pb-2">
+      <div className="flex justify-between items-center border-b border-own_border_gray_color_primary pb-2">
         <div className="flex items-center">
-          <div className="w-[80px] h-[30px] bg-[#d1d5db] animate-pulse rounded-sm"></div>
+          <div className="w-[80px] h-[30px] bg-own_skeleton_color_primary animate-pulse rounded-sm"></div>
           <GoChevronRight size={24} className="ml-3" />
         </div>
         <p className="text-[16px] font-semibold text-foreground cursor-pointer">
@@ -118,8 +124,8 @@ export function CategoryBannerTypeTwoSkeleton() {
                     </div>
                   </div>
                   <div className="flex flex-col basis-[10%] px-2 py-2 gap-1">
-                    <div className="w-full h-4 bg-[#d1d5db] animate-pulse rounded-sm"></div>
-                    <div className="w-full h-4 bg-[#d1d5db] animate-pulse rounded-sm"></div>
+                    <div className="w-full h-4 bg-own_skeleton_color_primary animate-pulse rounded-sm"></div>
+                    <div className="w-full h-4 bg-own_skeleton_color_primary animate-pulse rounded-sm"></div>
                   </div>
                 </div>
               );
@@ -140,12 +146,12 @@ export function CategoryBannerTypeTwoSkeleton() {
                       className="w-[80px] h-[60px] rounded-sm object-cover"
                     />
                     <div className="flex flex-col gap-1 flex-1 w-full">
-                      <div className="h-[17px] rounded-sm bg-[#d1d5db] animate-pulse"></div>
-                      <div className="h-[17px] rounded-sm bg-[#d1d5db] animate-pulse"></div>
-                      <div className="h-[17px] rounded-sm bg-[#d1d5db] animate-pulse"></div>
+                      <div className="h-[17px] rounded-sm bg-own_skeleton_color_primary animate-pulse"></div>
+                      <div className="h-[17px] rounded-sm bg-own_skeleton_color_primary animate-pulse"></div>
+                      <div className="h-[17px] rounded-sm bg-own_skeleton_color_primary animate-pulse"></div>
                     </div>
                   </div>
-                  <hr className="my-[10px] text-[#e3e3e3]" />
+                  <hr className="my-[10px] text-own_text_grey_color_primary" />
                 </div>
               );
             })}

@@ -96,7 +96,7 @@ export default function DoNotMiss2({articles}: any) {
                 className="flex flex-col w-full px-1 justify-center items-center whitespace-pre mt-[-15px] z-10"
                 id={`parent-${index.toString()}`}
               ></div>
-              <div className="my-[7px] uppercase text-red-600 font-semibold text-center">
+              <div className="my-[7px] uppercase text-own_red_text_color_primary font-semibold text-center">
                 | {curr?.category?.name} |
               </div>
               <div className="my-[5px] w-[100%] line-clamp-3 text-ellipsis overflow-hidden">

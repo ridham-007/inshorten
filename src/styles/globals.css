@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
     /* --background: 0 0% 100%;
@@ -72,7 +71,7 @@
 
 @layer base {
   body {
-   background: hsl(var(--background))
+    background: hsl(var(--background));
   }
 }
 
@@ -84,4 +83,44 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@layer base {
+  html {
+    --secondary-bg-color: #fff;
+    --primary-text-color: #000;
+    --primary-black-color: #fff;
+    --secondary-bg-black-color: #000;
+    --secondary-bg-header-top: #f5f7fa;
+    --secondary-bg-header-top-button: #000;
+    --primary-text-header-top-button: #fff;
+    --secondary-bg-header-bottom-button: #f5f7fa;
+    --primary-text-header-bottom-button: #000;
+    --primary-text-header-bottom-button-mobile: #d1d5db;
+    --primary-gray-text-color: #444746;
+    --primary-block-text-color: #64748b;
+    --primary-red-text-color: #dc2626;
+    --primary-white-text-color: #fff;
+    --secondary-bg-contact-color: #000;
+    --primary-text-contact-color: #fff;
+    --primary-blue-color: #1968fe;
+    --primary-text-grey-color: #4b5563;
+    --primary-border-gray-color: #e3e3e3;
+    --primary-text-gray-color: #e3e3e3;
+    --secondary-bg-skeleton-color: #d1d5db;
+    --primary-text-white-color: #fff;
+    --secondary-bg-footer-color: #403f45f9;
+    --secondary-bg-footer: #202028;
+    --primary-green-color: #050;
+    --primary-blue-hover-color: #2563eb;
+    --primary-slider-color: #93c5fd;
+    --primary-instagram-from-color: #f1d424;
+    --primary-instagram-via-color: #f42e7e;
+    --primary-instagram-to-color: #8a1bb5;
+    --primary-facebook-color: #36528c;
+    --primary-twitter-color: #2c313c;
+    --primary-youtube-color: #e51212;
+  }
+  @import "./dark.css";
+  @import "./light.css";
 }

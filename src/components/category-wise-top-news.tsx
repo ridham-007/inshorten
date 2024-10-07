@@ -48,7 +48,7 @@ export default function CategoryWiseTopNews({
               href={item?.slug}
               target="_blank"
               key={`CategoryWiseTopNews-${index}`}
-              className="flex flex-col flex-1 lg:basis-[32%] sm:basis-[49%] basis-[100%] lg:max-w-[32%] sm:max-w-[49%] cursor-pointer bg-white border-2 rounded-lg"
+              className="flex flex-col flex-1 lg:basis-[32%] sm:basis-[49%] basis-[100%] lg:max-w-[32%] sm:max-w-[49%] cursor-pointer border-2 rounded-lg"
               onClick={(e) => {
                 if (!e.ctrlKey && !e.metaKey) {
                   e.preventDefault();
@@ -64,11 +64,11 @@ export default function CategoryWiseTopNews({
                   ></ImageWithFallback>
                 </div>
                 <div className="flex flex-col gap-5 p-3">
-                  <div className="text-[18px] font-bold hover:text-[#1968fe]">
+                  <div className="text-[18px] font-bold hover:text-own_blue_color_primary">
                     {item?.title}
                   </div>
                   {item?.description && (
-                    <div className="text-[14px] text-gray-600 font-light mb-5">
+                    <div className="text-[14px]  font-light mb-5">
                       {item?.description}
                     </div>
                   )}
@@ -82,7 +82,7 @@ export default function CategoryWiseTopNews({
                   alt="Picture of the icon"
                   className="h-[25px] w-[25px]"
                 />
-                <span className="text-[13px] text-gray-600 font-semibold self-center">
+                <span className="text-[13px] text-own_gray_text_color_primary font-semibold self-center">
                   InShorten
                 </span>
               </div>
@@ -122,13 +122,13 @@ export function CategoryWiseTopNewsSkeleton() {
                   ></ImageWithFallback>
                 </div>
                 <div className="flex flex-col gap-3 p-3">
-                  <div className="text-[18px] font-bold hover:text-blue-600">
-                    <div className="w-full h-5 bg-[#d1d5db] animate-pulse rounded-sm"></div>
+                  <div className="text-[18px] font-bold hover:text-own_blue_hover_primary">
+                    <div className="w-full h-5 bg-own_skeleton_color_primary animate-pulse rounded-sm"></div>
                   </div>
                   <div className="text-[14px] text-gray-600 font-light mb-5">
-                    <div className="w-full h-5 bg-[#d1d5db] animate-pulse rounded-sm"></div>
-                    <div className="w-full h-5 bg-[#d1d5db] animate-pulse rounded-sm"></div>
-                    <div className="w-full h-5 bg-[#d1d5db] animate-pulse rounded-sm"></div>
+                    <div className="w-full h-5 bg-own_skeleton_color_primary animate-pulse rounded-sm"></div>
+                    <div className="w-full h-5 bg-own_skeleton_color_primary animate-pulse rounded-sm"></div>
+                    <div className="w-full h-5 bg-own_skeleton_color_primary animate-pulse rounded-sm"></div>
                   </div>
                 </div>
                 <div className="flex p-3 mt-auto gap-1">
@@ -136,7 +136,7 @@ export function CategoryWiseTopNewsSkeleton() {
                     alt={`CategoryWiseTopNews-${index}-alt`}
                     src={item?.image}
                   ></ImageWithFallback>
-                  <div className="w-full h-5 bg-[#d1d5db] animate-pulse rounded-sm"></div>
+                  <div className="w-full h-5 bg-own_skeleton_color_primary animate-pulse rounded-sm"></div>
                 </div>
               </div>
             </div>

@@ -25,14 +25,14 @@ export default function DoNotMiss3(props: Article) {
         <div className="flex flex-1"></div>
         <button
           type="button"
-          className="bg-red-600 text-white px-4 py-1 text-[18px]  rounded-md w-fit"
+          className="bg-own_red_text_color_primary  text-own_white_text_color_primary px-4 py-1 text-[18px]  rounded-md w-fit"
         >
           {props?.category?.name}
         </button>
-        <div className="py-[5px] text-[18px] sm:text-[22px] font-bold text-white line-clamp-2 text-ellipsis overflow-hidden">
+        <div className="py-[5px] text-[18px] sm:text-[22px] font-bold text-own_white_text_color_primary line-clamp-2 text-ellipsis overflow-hidden">
           {props?.title}
         </div>
-        <div className="py-[5px] w-[100%] line-clamp-2 text-ellipsis overflow-hidden text-white">
+        <div className="py-[5px] w-[100%] line-clamp-2 text-ellipsis overflow-hidden text-own_white_text_color_primary">
           {props?.description}
         </div>
       </div>

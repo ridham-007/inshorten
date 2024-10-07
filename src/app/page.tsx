@@ -9,7 +9,7 @@ import SlickSlider from "@/components/slider";
 export default async function Home() {
 
   return (
-    <main className="flex w-full flex-wrap gap-2 px-3">
+    <main className="flex w-full flex-wrap gap-2 px-3 ">
       <section className="flex flex-col flex-1 basis-[100%] sm:basis-[68%]">
         <Suspense fallback={<DynamicNewsWallSkeleton label="Recent" />}>
           {(async function () {

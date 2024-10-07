@@ -36,7 +36,7 @@ export default function Timer() {
        {timeValues.map((value, index) => (
           <div
             key={index}
-            className="text-white"
+            className="text-own_white_color_primary"
           >
             {value}
           </div>

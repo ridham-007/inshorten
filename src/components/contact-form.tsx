@@ -60,7 +60,7 @@ import React from "react";
 
 export default function ContactForm() {
   return (
-    <div className="bg-white border border-gray-300 rounded-lg p-5">
+    <div className=" border border-own_own_white_text_color_primary rounded-lg p-5">
       <div className="flex justify-center mt-5">
         <div className="text-2xl">Contact Form</div>
       </div>
@@ -68,30 +68,30 @@ export default function ContactForm() {
         <label className="text-base">Name</label>
         <input
           type="text"
-          className="p-2 border border-gray-300 rounded"
+          className="p-2 border border-own_own_white_text_color_primary  text-own_bg_black_color_secondary rounded "
           placeholder="Enter your name here..."
         />
         <label className="text-base">E-Mail</label>
         <input
           type="email"
-          className="p-2 border border-gray-300 rounded"
+          className="p-2 border border-own_own_white_text_color_primary text-own_bg_black_color_secondary rounded"
           placeholder="Enter your email here..."
         />
         <label className="text-base">Website</label>
         <input
           type="text"
-          className="p-2 border border-gray-300 rounded"
+          className="p-2 border border-own_own_white_text_color_primary text-own_bg_black_color_secondary rounded"
           placeholder="Enter your website here..."
         />
         <label className="text-base">Comment</label>
         <textarea
-          className="p-2 border border-gray-300 rounded h-24"
+          className="p-2 border border-own_own_white_text_color_primary text-own_bg_black_color_secondary rounded h-24"
           placeholder="Enter your comments"
         ></textarea>
         <div className="flex justify-center mt-5">
           <button
             type="submit"
-            className="w-20 bg-black text-white rounded py-2 hover:bg-gray-800"
+            className="w-20 bg-own_bg_contact_color_secondary text-own_text_contact_color_primary rounded py-2 "
           >
             Submit
           </button>
@@ -100,4 +100,3 @@ export default function ContactForm() {
     </div>
   );
 }
-
