@@ -76,7 +76,7 @@ export default function CategoryWiseTopNews({
                     {item?.title}
                   </div>
                   {item?.description && (
-                    <div className="text-[14px] text-gray-600 font-light mb-5">
+                    <div className="text-[14px] text-own_text_gray_color_primary font-light mb-5">
                       {truncateText(item?.description, 50)}
                     </div>
                   )}
@@ -120,7 +120,7 @@ export function CategoryWiseTopNewsSkeleton() {
           return (
             <div
               key={`CategoryWiseTopNewsSkeleton-${index}`}
-              className="flex flex-col flex-1 lg:basis-[32%] sm:basis-[49%] basis-[100%] lg:max-w-[32%] sm:max-w-[49%] cursor-pointer border-2 bg-white rounded-lg"
+              className="flex flex-col flex-1 lg:basis-[32%] sm:basis-[49%] basis-[100%] lg:max-w-[32%] sm:max-w-[49%] cursor-pointer border-2  rounded-lg"
             >
               <div className="flex flex-col">
                 <div className="flex flex-col font-semibold">
